@@ -8,7 +8,12 @@
 </head>
 <body>
     <h1>トップページ</h1>
-    <p>{{$age}}</p>
-    <p>{{$skills[0]["name"]}}</p>
+    @if ($age >= 20)
+        <p>お酒が飲めます</p>
+    @elseif ($age >= 18)
+        <p>免許が取れます</p>
+    @else
+        <p>未成年です</p>
+    @endif
 </body>
 </html>
