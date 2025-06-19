@@ -13,8 +13,24 @@
     <img
         src="{{ asset('images/icon.jpeg') }}"
         alt="アイコン"
-        style="width:100px; height:100px;"
+        style="width:100px;"
     >
-    <button class="button">ボタン</button>
+
+    <form active="{{ route('top') }}">
+        <label>名前</label>
+        <input type="text" name="name">
+        <label>メールアドレス</label>
+        <input type="text" name="email">
+
+        <button class="button">送信</button>
+    </form>
+
+    @if ($name) 
+        <p>名前：{{ name }}</p>
+    @endif
+
+    @if ($email)
+        <p>メールアドレス：{{ $email }}</p>
+    @endif
 </body>
 </html>
