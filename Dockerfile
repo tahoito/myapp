@@ -1,17 +1,16 @@
-FROM php:8.2-fpm
+FROM php:8.4
+WORKDIR /workdir
+COPY --from=composer:2.8 /usr/bin/composer /usr/bin/composer
+ENV COMPOSER_ALLOW_SUPERUSER=1
+ENV COMPOSER_HOME="/opt/composer"
+ENV PATH="$PATH:/opt/composer/vendor/bin"
+RUN apt-get update
+RUN apt-get install -y zip
 
-# 必要なパッケージをインストール
-RUN apt-get update && apt-get install -y \
-    zip unzip curl git libzip-dev libpq-dev libpng-dev libonig-dev libxml2-dev \
-    && docker-php-ext-install pdo pdo_mysql zip
-
-# Composerインストール
-COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
-
-WORKDIR /var/www
+RUN docker-php-ext-install pdo_mysql
 
 COPY . .
-
+WORKDIR /workdir/laravel_app
 RUN composer install
-
-CMD ["php-fpm"]
+CMD ["php", "artisan", "serve", "--host", "0.0.0.0"]
+EXPOSE 8000

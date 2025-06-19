@@ -26,7 +26,7 @@
     </form>
 
     @if ($name) 
-        <p>名前：{{ name }}</p>
+        <p>名前：{{ $name }}</p>
     @endif
 
     @if ($email)
