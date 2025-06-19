@@ -1,0 +1,9 @@
+/* 適当なボタンクラスを作成 */
+.button {
+  width: fit-content;
+  padding: 0.75rem;
+  border-radius: 0.75rem;
+  border: 1px solid #d1d5db;
+  font-weight: bold;color: #0000ff;
+  background-color: #ddddff
+}
