@@ -29,5 +29,9 @@ Route::prefix('login')->group(function() {
 });
 
 Route::prefix('task')->group(function () {
-    Route::get('/',[TaskController::class, 'index'])->name("task");
+    Route::prefix('task')->group(function () {
+        Route::get('/',[TaskController::class, 'index'])->name("task");
+        Route::get('/create',[TaskController::class, 'create'])->name("task.create");
+        Route::post('/',[TaskController::class,'store']);
+    });
 });

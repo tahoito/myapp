@@ -9,4 +9,8 @@ class TaskController extends Controller
     function index(){
         return view("task.index");
     }
+
+    function create(){
+        return view("task.create");
+    }
 }
