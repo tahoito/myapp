@@ -46,4 +46,18 @@ class TaskController extends Controller
 
         return view("task.edit",compact("task"));
     }
+
+    function update(Request $request, $id) {
+        $title = $request["title"];
+        $content = $request["content"];
+
+        $user = Auth::user();
+
+        $user->tasks()->find($id)->update([
+            "title" => $title,
+            "content" => $content
+        ]);
+
+        return redirect()->route("task");
+    }
 }
