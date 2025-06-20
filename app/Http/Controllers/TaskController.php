@@ -8,7 +8,10 @@ use Illuminate\Support\Facades\Auth;
 class TaskController extends Controller
 {
     function index(){
-        return view("task.index");
+        $user = Auth::user();
+
+        $tasks = $user->tasks;
+        return view("task.index",compact("tasks"));
     }
 
     function create(){

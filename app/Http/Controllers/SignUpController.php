@@ -34,7 +34,7 @@ class SignUpController extends Controller
         $user = User::create([
             'name' => $name,
             'email' => $email,
-            'password' => Hash::male($password),
+            'password' => Hash::make($password),
         ]);
 
         auth()->login($user);
