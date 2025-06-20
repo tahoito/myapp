@@ -22,11 +22,14 @@
             <td>{{ $task["content"] }}</td>
             <td>{{ $task["created_at"] }}</td>
             <td>{{ $task["updated_at"] }}</td>
+            <td>
+                <a href={{ route("task.show", ["id" => $task["id"]]) }}>詳細</a>
+            </td>
         </tr>
         @endforeach
     </table>
 
-    <a href="{{ route("task.create)" }}>タスク作成</a>
+    <a href="{{ route("task.create") }}">タスク作成</a>
 
 </body>
 </html>

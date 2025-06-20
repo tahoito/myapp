@@ -31,4 +31,19 @@ class TaskController extends Controller
 
         return redirect()->route("task");
     }
+
+    function show($id){
+        $user = Auth::user();
+
+        $task = $user->tasks->find($id);
+        return view("task.show",compact("task"));
+    }
+
+    function edit($id){
+        $user = Auth::user();
+
+        $task = $user->tasks->find($id);
+
+        return view("task.edit",compact("task"));
+    }
 }
