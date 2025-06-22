@@ -60,4 +60,11 @@ class TaskController extends Controller
 
         return redirect()->route("task");
     }
+
+    function destroy($id){
+        $user = Auth::user();
+
+        $user->tasks()->find($id)->delete();
+        return redirect()->route("task");
+    }
 }

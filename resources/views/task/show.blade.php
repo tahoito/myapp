@@ -17,5 +17,10 @@
     <a href="{{ route("task") }}">戻る</a>
     <a href="{{ route("task.edit" , ["id" => $task["id"]] }}">編集</a>
 
+    <form action={{ route('task.destroy',['id' => $task["id"]]) }} method="POST">
+        @csrf 
+        @method('DELETE')
+        <button type="submit">削除する</button>
+    </form>
 </body>
 </html>
